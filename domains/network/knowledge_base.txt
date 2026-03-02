@@ -1,0 +1,791 @@
+[
+  {
+    "symptom": "Radio Off",
+    "possible_causes": [
+      "WTR IC ko XO clock nahi milna",
+      "WTR IC par VDD 1.8V aur 1.0V missing",
+      "RFFE Data Clock line open/short",
+      "CPL signal issue",
+      "51 ohm resistor open ya value increase",
+      "Power IC faulty"
+    ],
+    "tests_diagnostics": [
+      "Phone restart karke second boot ke waqt WTR IC par voltage check karo (sirf 1 second ke liye voltage aata hai)",
+      "Cool testing me sabhi voltage line ki diode value check karo (agar diode value bahut kam hai to leakage, agar 0 ya beep aata hai to line short hai)",
+      "Hot testing me agar 1.8V fluctuating hai to WTR replace karke test karo",
+      "Agar 1.8V stable hai lekin problem hai to WTR IC change karna hi padega"
+    ],
+    "solutions": [
+      "WTR IC replace karo",
+      "Power IC replace karke check karo",
+      "CPL signal repair karo",
+      "51 ohm resistor replace karo (agar open ya value increase hai)"
+    ],
+    "knowledge_facts": [
+      "WTR IC ko XO clock signal milna zaroori hai",
+      "VDD 1.8V aur VDD 1.0V ke bina WTR IC suspend ho jati hai",
+      "RFFE Data Clock aur I/Q signal open/short hone par Radio Off hota hai",
+      "CPL signal fault bhi Radio Off create karta hai",
+      "Radio Off condition me WTR par koi voltage nahi milta jab tak Power IC proper kaam na kare"
+    ]
+  },
+  {
+    "symptom": "Network Not Found (Manual Search ke baad bhi)",
+    "possible_causes": [
+      "WTR IC faulty",
+      "XO signal me problem",
+      "WTR IC suspend due to voltage issue"
+    ],
+    "tests_diagnostics": [
+      "Manual network search duration observe karo (zyada time lagne ke baad not found aata hai)",
+      "XO clock output check karo",
+      "WTR IC voltage stability check karo (1.8V stable hona chahiye)"
+    ],
+    "solutions": [
+      "WTR IC replace karo",
+      "XO clock section check/replace karo"
+    ],
+    "knowledge_facts": [
+      "Agar XO clock nahi milti to network search hi nahi hota",
+      "Emergency network tabhi aata hai jab operator-specific signal select nahi ho pata, kyoki emergency networks kisi sim se sambandhit nahi hote hai."
+    ]
+  },
+  {
+    "symptom": "Call Issues (One Way Transmission/Reception)",
+    "possible_causes": [
+      "I/Q signal line open/short between WTR aur CPU"
+    ],
+    "tests_diagnostics": [
+      "Incoming aur outgoing call test karo",
+      "I/Q line continuity check karo"
+    ],
+    "solutions": [
+      "I/Q line repair karo",
+      "WTR IC replace karo agar line intact ho"
+    ],
+    "knowledge_facts": [
+      "I/Q line open/short hone par sirf incoming ya outgoing kaam karta hai (one way communication)",
+      "Yah problem aane par outgoing voice na jaana ya incoming voice na aana jaisi problem create ho jaate hai."
+    ]
+  },
+  {
+    "symptom": "Voice Issues (Incoming ya Outgoing Voice Missing)",
+    "possible_causes": [
+      "I/Q signal line open/short"
+    ],
+    "tests_diagnostics": [
+      "Call test karke check karo ki voice kis taraf missing hai"
+    ],
+    "solutions": [
+      "I/Q line repair karo"
+    ],
+    "knowledge_facts": [
+      "Voice transmission aur reception dono I/Q lines par depend karte hain"
+    ]
+  },
+  {
+    "symptom": "Internet Not Working (Data Speed/Connection Show ho raha hai, lekin data receive nahi hota)",
+    "possible_causes": [
+      "WTR IC fault in data handling"
+    ],
+    "tests_diagnostics": [
+      "Internet connection icon aur actual data flow verify karo"
+    ],
+    "solutions": [
+      "WTR IC replace karo"
+    ],
+    "knowledge_facts": [
+      "Kabhi kabhi WTR IC me sirf data path faulty hota hai jabki network signals show hote hain"
+    ]
+  },
+  {
+    "symptom": "No Service",
+    "possible_causes": [
+      "WTR IC faulty",
+      "XO clock problem"
+    ],
+    "tests_diagnostics": [
+      "Manual search duration check karo",
+      "XO clock verify karo"
+    ],
+    "solutions": [
+      "WTR IC replace karo",
+      "XO clock section repair karo"
+    ],
+    "knowledge_facts": [
+      "Band pass filter aur WTR ke beech ke connections ki wajah se kabhi No Service nahi aata",
+      "Yah isliye hota hai kyoki 2G ke liye 2 band, 3G ke liye 2 band, 4G ke liye 2 band aur 5G ke liye to bahut se band kam karte hai to agar inme se kisi bhi band ki 1 ya 2 line open bhi ho jaati hai to baki ke baad to kaam karenge hi isliye kabhi bhi band pass filter ki bajah se no service nhi aa sakta."
+    ]
+  },
+  {
+    "symptom": "Baseband Unknown / Insert SIM",
+    "possible_causes": [
+      "XO clock issue in SDR/MTK RF IC",
+      "Required control lines missing in SDR/MTK RF IC",
+      "Voltage supply missing/short in SDR/MTK RF IC",
+      "CPL signal fault (SDR/MTK IC me bhi)"
+    ],
+    "tests_diagnostics": [
+      "XO_IN, QLINK_EN, WMSS_RESETN aur control lines test karo",
+      "SDR control lines: QLINK_EN, QLINK_REQ, WMSS_RESETN,XO_IN,RFFE1_CLK,RFFE1_DATA,VDDA_1P0_XO,VDDA_1P8_FBRX,VDDD_1P8,VDDD_1P0,VDDD_1P0_QLINK,VDDA_1P2_FBRX,TX_FBRX_M,TX_FBRX_P. ko check karo.",
+      "MTK control lines continuity check karo (XO_IN,VIO,EN_BB,RCAL,TXDET,BSI_EN,BSI_CLK,BSI_D0,BSI_D1,BSI_D2,VDD_RXHF,VDD_RXLV,VDD_STXHF,VDD_STXLV,VDD_TXHF)",
+      "Voltage lines jaise VREG_1.8V, VREG_1.2V, VREG_1.0V, VRF18 (1.8V), VRF12 (1.2V) check karo"
+    ],
+    "solutions": [
+      "XO clock section repair karo",
+      "Voltage supply restore karo",
+      "SDR/MTK RF IC replace karo"
+    ],
+    "knowledge_facts": [
+      "SDR aur MTK ki RF IC me Baseband inbuilt hota hai. Agar in ic ka xo clock me problem aayi to Baseband unknown insert sim ka problem create ho jaata hai.",
+      "CPL signal issue SDR/MTK IC me bhi Baseband Unknown ya Radio Off cause kar sakta hai"
+    ]
+  }
+]
+
+{
+  "component": "FEM (Front End Module)",
+  "description": "Antenna se RF signal receive karke required band ke band pass filter ko forward karta hai. Ek prakar ka digital switch hai jo RFFE Data aur RFFE Clock ke through CPU commands leta hai aur ek time me ek band pass filter activate karta hai.",
+  "functionality_details": {
+    "signal_flow": "Antena se aane wale RF signal ko receive karke, FEM IC ek prakar ka network switch hai. CPU RFFE Data aur RFFE Clock ke madhyam se ispar commands bhejta hai. Yah IC us band ko switch karti hai jo WTR ya SDR ya MTK ki RF IC ne preferred kiya hai. Signal flow Antena -> FEM -> Band Pass Filter -> WTR/SDR/MTK RF IC hota hai.",
+    "band_pass_filter_role": "Jab FEM signal ko band pass filter par switch karta hai, to wo filter apni property ya strength ke mutabik RF signal ke bandwidth ko jaise 850MHz, 900MHz, 1800MHz, 2100MHz, 2300MHz, 2500MHz, 3500MHz, 26GHz etc. in frequency me se kisi ek ko jisko pass karne ke liye jo band pass filter capable hai wo wahi band ke signal ko pass karta hai."
+  },
+  "issues": [
+    {
+      "symptom": "Phone me bilkul No Service",
+      "possible_causes": [
+        "FEM IC completely faulty",
+        "RFFE Data/Clock signal nahi mil raha",
+        "Antenna se FEM input line open/short"
+      ],
+      "tests_diagnostics": [
+        "All bands par signal check karo (kisi bhi band me signal nahi aata to FEM issue confirm ho sakta hai)",
+        "Diode testing karo FEM input/output lines par",
+        "Oscilloscope se RFFE Data/Clock signals check karo"
+      ],
+      "solutions": [
+        "FEM IC replace karo",
+        "RFFE Data/Clock line repair karo",
+        "Antenna connection re-solder karo"
+      ]
+    },
+    {
+      "symptom": "Sirf ek particular band me network missing (e.g., Band 3 par issue, baaki bands sahi)",
+      "possible_causes": [
+        "Us band ka band pass filter faulty ho gaya",
+        "FEM se WTR IC tak RF path us band ke liye open/short"
+      ],
+      "tests_diagnostics": [
+        "Different bands me SIM dal kar test karo (sirf ek band miss ho to filter issue hai)",
+        "Band specific RF tracing karo FEM -> WTR IC path"
+      ],
+      "solutions": [
+        "Faulty band pass filter replace karo",
+        "RF path repair karo FEM se WTR tak"
+      ]
+    },
+    {
+      "symptom": "Signal aata hai par unstable hai ya drop ho jata hai",
+      "possible_causes": [
+        "FEM switching properly nahi kar raha",
+        "CPU command FEM tak proper nahi ja rahi",
+        "Band pass filter weak ho gaya"
+      ],
+      "tests_diagnostics": [
+        "Different locations aur bands par signal stability check karo",
+        "Oscilloscope se RFFE switching signals check karo"
+      ],
+      "solutions": [
+        "FEM IC replace karo",
+        "CPU to FEM command line (RFFE interface) repair karo",
+        "Weak filter replace karo"
+      ]
+    }
+  ],
+  "reference_bands": {
+    "2G_3G_4G": {
+      "B1": "2100MHz",
+      "B3": "1800MHz",
+      "B5": "850MHz",
+      "B8": "900MHz",
+      "B40": "2300MHz",
+      "B41": "2500MHz"
+    },
+    "5G_NR": {
+      "n78": "3500MHz",
+      "n28a": "700MHz",
+      "n28b": "700MHz",
+      "n1": "2100MHz",
+      "n3": "1800MHz",
+      "n5": "850MHz",
+      "n8": "900MHz",
+      "n40": "2300MHz",
+      "n41": "2500MHz",
+      "n258": "26GHz (mmWave)"
+    }
+  }
+}
+{
+  "component": "FEM (Front End Module)",
+  "description": "FEM IC ke pins aur unse related common faults. Isme VRAMP, VBAT, VCC, DATA, CLOCK, CPL aur TRX pins hote hain jo RF signal transmit/receive aur band switching control karte hain. In pins aur FEM IC me aane wale faults ke kaaran kai tarah ke network-related problems aate hain.",
+  "pins": {
+    "VRAMP": {
+      "function": "Control line for FEM operation.",
+      "connections": [
+        "Normally ek 100k resistor ground ke sath connect hota hai",
+        "Kuch phones me series resistor ke through CPU se direct connect hota hai"
+      ]
+    },
+    "VBAT": {
+      "function": "Direct battery voltage input.",
+      "connections": "Battery se direct supply"
+    },
+    "VCC": {
+      "function": "Power supply pin.",
+      "connections": "0.5V – 4.2V supply"
+    },
+    "DATA": {
+      "function": "CPU se commands receive karta hai. Yah RFFE DATA line hai.",
+      "connections": "RFFE DATA line se connect"
+    },
+    "CLOCK": {
+      "function": "Data synchronization ke liye. Yah RFFE CLOCK line hai.",
+      "connections": "RFFE CLOCK line se connect"
+    },
+    "CPL": {
+      "function": "Coupling signal pin. Signal feedback aur stability ke liye.",
+      "connections": "CPL signal line se connect"
+    },
+    "TRX": {
+      "function": "RF signal ko transmit (TX) aur receive (RX) karte hain.",
+      "connections": "RF path se connect"
+    }
+  },
+  "issues_by_symptom": [
+    {
+      "symptom": "Network bilkul nahi aata (No Service)",
+      "possible_causes": [
+        "VBAT/VCC missing ya FEM IC dead",
+        "RFFE Data/Clock signals missing",
+        "Antenna port line open/short"
+      ],
+      "tests_diagnostics": [
+        "VBAT aur VCC voltage check karo",
+        "Diode testing karo Antenna port pe",
+        "Oscilloscope se RFFE signals check karo"
+      ],
+      "solutions": [
+        "FEM IC replace karo",
+        "Power line repair karo",
+        "Antenna port re-solder karo"
+      ]
+    },
+    {
+      "symptom": "Signal full hai par call nahi lagta",
+      "possible_causes": [
+        "TRX pin ka fault (RF transmission path open ya short)",
+        "VRAMP control line issue",
+        "CPL signal faulty"
+      ],
+      "tests_diagnostics": [
+        "VRAMP pin pe resistor aur voltage check karo",
+        "CPL signal continuity check karo",
+        "TRX pin ke diode values aur continuity test karo"
+      ],
+      "solutions": [
+        "VRAMP line resistor replace karo",
+        "CPL line repair karo",
+        "TRX port check karke rework/FEM IC replace karo"
+      ]
+    },
+    {
+      "symptom": "Sirf ek band ya SIM kaam karta hai",
+      "possible_causes": [
+        "Specific band pass filter faulty",
+        "RFFE command switching issue (MIPI control fault)",
+        "Band-specific TRX path open/short"
+      ],
+      "tests_diagnostics": [
+        "Different SIM/bands test karo",
+        "Band-specific RF tracing karo"
+      ],
+      "solutions": [
+        "Band pass filter replace karo",
+        "RFFE line repair karo"
+      ]
+    },
+    {
+      "symptom": "Call me awaz nahi aati ya awaz nahi jati",
+      "possible_causes": [
+        "TRX pin transmit/receive faulty",
+        "FEM audio path band mismatch"
+      ],
+      "tests_diagnostics": [
+        "TRX diode values test karo",
+        "Audio call path FEM se trace karo"
+      ],
+      "solutions": [
+        "TRX port repair/re-solder",
+        "FEM IC replace karo"
+      ]
+    },
+    {
+      "symptom": "Phone bina kaam ke garam hota hai",
+      "possible_causes": [
+        "VBAT/VCC pin short",
+        "TRX pin leakage",
+        "FEM internal short"
+      ],
+      "tests_diagnostics": [
+        "Heat gun se hot part identify karo",
+        "VBAT line current draw measure karo"
+      ],
+      "solutions": [
+        "VBAT/VCC short remove karo",
+        "FEM IC replace karo"
+      ]
+    },
+    {
+      "symptom": "Signal bar kabhi aata hai, kabhi chala jata hai",
+      "possible_causes": [
+        "FEM switching unstable",
+        "RFFE Clock/Data intermittent",
+        "CPL line loose"
+      ],
+      "tests_diagnostics": [
+        "RFFE Clock waveform check karo",
+        "Signal stability observe karo"
+      ],
+      "solutions": [
+        "Clock/Data re-solder karo",
+        "CPL connection fix karo"
+      ]
+    },
+    {
+      "symptom": "Signal hai par data speed slow hai",
+      "possible_causes": [
+        "Weak TRX pin",
+        "Band switching delay",
+        "Filter weak ho gaya"
+      ],
+      "tests_diagnostics": [
+        "Speed test different bands par karo",
+        "TRX line diode testing karo"
+      ],
+      "solutions": [
+        "Weak TRX line repair karo",
+        "FEM IC replace karo"
+      ]
+    },
+    {
+      "symptom": "Signal bar aata hai par call drop hoti hai",
+      "possible_causes": [
+        "TRX pin unstable",
+        "CPL feedback signal issue",
+        "VRAMP fluctuation"
+      ],
+      "tests_diagnostics": [
+        "CPL line oscilloscope se check karo",
+        "VRAMP voltage stability test karo"
+      ],
+      "solutions": [
+        "CPL repair karo",
+        "VRAMP line stabilize karo"
+      ]
+    },
+    {
+      "symptom": "MIPI control (band switch) kaam nahi karta",
+      "description": "MIPI control network band switching ke liye use hota hai aur yeh RFFE DATA aur CLOCK lines se operate hota hai. Iska kaam na karna in lines ke fault ki wajah se hota hai.",
+      "possible_causes": [
+        "RFFE Data/Clock missing",
+        "CPU se FEM command nahi ja rahi"
+      ],
+      "tests_diagnostics": [
+        "RFFE Data aur Clock waveform check karo",
+        "CPU-FEM continuity check karo"
+      ],
+      "solutions": [
+        "RFFE line repair karo",
+        "CPU interface re-solder karo"
+      ]
+    },
+    {
+      "symptom": "Antenna port pe DC voltage milta hai",
+      "possible_causes": [
+        "TRX short",
+        "Antenna port leakage",
+        "VBAT leakage FEM ke andar"
+      ],
+      "tests_diagnostics": [
+        "Antenna port diode value test karo",
+        "VBAT isolation check karo"
+      ],
+      "solutions": [
+        "Antenna port repair karo",
+        "FEM IC replace karo"
+      ]
+    }
+  ]
+}
+{
+  "component": "FEM (Front End Module)",
+  "description": "FEM IC antenna se aane wale RF signals ko receive karta hai aur unhe specific band pass filters ke through switch karta hai. Ye CPU ke RFFE Data aur Clock commands ke madhyam se digitally operate karta hai.",
+  "function": {
+    "role": "Network band switching aur RF signal routing. Yah FEM IC ek prakar ka network switch hai jo ki WTR, SDR, ya MTK RF IC ke dwara preferred kiye gaye band ke mutabik signal ko switch karta hai.",
+    "controlled_by": ["RFFE Data", "RFFE Clock (CPU commands)"],
+    "operation": "Preferred band ke hisaab se RF signal ko selected band pass filter ke through pass karta hai"
+  },
+  "supported_bands": {
+    "2G/3G/4G Bands": {
+      "B1": "2100MHz",
+      "B3": "1800MHz",
+      "B5": "850MHz",
+      "B8": "900MHz",
+      "B40": "2300MHz",
+      "B41": "2500MHz"
+    },
+    "5G NR Bands": {
+      "n78": "3500MHz",
+      "n28a": "700MHz",
+      "n28b": "700MHz",
+      "n1": "2100MHz",
+      "n3": "1800MHz",
+      "n5": "850MHz",
+      "n8": "900MHz",
+      "n40": "2300MHz",
+      "n41": "2500MHz",
+      "n258 (mmWave)": "26GHz"
+    }
+  },
+  "pins": {
+    "VRAMP": [
+      "Normally 100k resistor ground ke sath connect hota hai",
+      "Kuch phones me series resistor ke through CPU se connect hota hai"
+    ],
+    "VBAT": "Battery voltage input",
+    "VCC": "0.5V – 4.2V supply",
+    "DATA": "RFFE DATA line (CPU command input)",
+    "CLOCK": "RFFE CLOCK line (timing/sync)",
+    "CPL": "Coupling signal pin",
+    "TRX": "Transmit/Receive RF signal pins"
+  },
+  "issues": {
+    "cause_and_effect_note": "In pin aur FEM IC se aane wale faults Network bilkul nahi aana, signal full hai par call nahi lagna, jaise kai tarah ke problems create karte hain.",
+    "symptoms": [
+      {
+        "symptom": "Network bilkul nahi aata (No Service)",
+        "possible_causes": [
+          "VBAT/VCC missing",
+          "RFFE Data/Clock signals missing",
+          "Antenna port line open/short",
+          "FEM IC dead"
+        ],
+        "tests_diagnostics": [
+          "VBAT aur VCC voltage measure karo",
+          "Antenna port diode testing",
+          "Oscilloscope se RFFE signals check karo"
+        ],
+        "solutions": [
+          "Power line repair karo",
+          "FEM IC replace karo",
+          "Antenna port re-solder karo"
+        ]
+      },
+      {
+        "symptom": "Signal full hai par call nahi lagta",
+        "possible_causes": [
+          "VRAMP control line issue",
+          "CPL signal faulty",
+          "TRX pin short/open"
+        ],
+        "tests_diagnostics": [
+          "VRAMP pin pe resistor aur voltage check karo",
+          "CPL signal continuity test karo"
+        ],
+        "solutions": [
+          "VRAMP resistor replace karo",
+          "CPL line repair karo",
+          "TRX port rework karo"
+        ]
+      },
+      {
+        "symptom": "Sirf ek band ya SIM kaam karta hai",
+        "possible_causes": [
+          "Specific band pass filter faulty",
+          "RFFE command switching issue",
+          "TRX path band-specific open/short"
+        ],
+        "tests_diagnostics": [
+          "Different SIM aur bands test karo",
+          "Band-specific RF tracing karo"
+        ],
+        "solutions": [
+          "Band pass filter replace karo",
+          "RFFE line repair karo"
+        ]
+      },
+      {
+        "symptom": "Call me awaz nahi aati ya nahi jati",
+        "possible_causes": [
+          "TRX transmit/receive pin faulty",
+          "FEM audio path mismatch"
+        ],
+        "tests_diagnostics": [
+          "TRX diode values test karo",
+          "Call audio path trace karo"
+        ],
+        "solutions": [
+          "TRX port repair karo",
+          "FEM IC replace karo"
+        ]
+      },
+      {
+        "symptom": "Phone bina kaam ke garam hota hai",
+        "possible_causes": [
+          "VBAT/VCC pin short",
+          "TRX leakage",
+          "FEM internal short"
+        ],
+        "tests_diagnostics": [
+          "Heat gun se hot spot detect karo",
+          "VBAT line current consumption check karo"
+        ],
+        "solutions": [
+          "VBAT/VCC short remove karo",
+          "FEM IC replace karo"
+        ]
+      },
+      {
+        "symptom": "Signal bar kabhi aata hai, kabhi chala jata hai",
+        "possible_causes": [
+          "FEM switching unstable",
+          "RFFE Data/Clock intermittent",
+          "CPL line loose"
+        ],
+        "tests_diagnostics": [
+          "RFFE Clock waveform oscilloscope se check karo",
+          "Signal stability observe karo"
+        ],
+        "solutions": [
+          "Clock/Data re-solder karo",
+          "CPL connection fix karo"
+        ]
+      },
+      {
+        "symptom": "Signal hai par data speed slow hai",
+        "possible_causes": [
+          "Weak TRX pin",
+          "Band switching delay",
+          "Filter weak"
+        ],
+        "tests_diagnostics": [
+          "Different bands par speed test karo",
+          "TRX diode testing karo"
+        ],
+        "solutions": [
+          "TRX line repair karo",
+          "FEM IC replace karo"
+        ]
+      },
+      {
+        "symptom": "Signal bar aata hai par call drop hoti hai",
+        "possible_causes": [
+          "TRX pin unstable",
+          "CPL feedback issue",
+          "VRAMP fluctuation"
+        ],
+        "tests_diagnostics": [
+          "CPL waveform oscilloscope se observe karo",
+          "VRAMP voltage stability check karo"
+        ],
+        "solutions": [
+          "CPL line repair karo",
+          "VRAMP stabilize karo"
+        ]
+      },
+      {
+        "symptom": "MIPI control (band switch) kaam nahi karta",
+        "possible_causes": [
+          "RFFE Data/Clock missing",
+          "CPU se FEM command nahi ja rahi"
+        ],
+        "tests_diagnostics": [
+          "RFFE waveform test karo",
+          "CPU-FEM continuity check karo"
+        ],
+        "solutions": [
+          "RFFE line repair karo",
+          "CPU interface re-solder karo"
+        ]
+      },
+      {
+        "symptom": "Antenna port pe DC voltage milta hai",
+        "possible_causes": [
+          "TRX short",
+          "Antenna port leakage",
+          "VBAT leakage FEM ke andar"
+        ],
+        "tests_diagnostics": [
+          "Antenna port diode test karo",
+          "VBAT isolation check karo"
+        ],
+        "solutions": [
+          "Antenna port repair karo",
+          "FEM IC replace karo"
+        ]
+      }
+    ]
+  }
+}
+{
+  "component": "PFO (Power Frequency Oscillator)",
+  "description": "PFO ka full form **Power Frequency Oscillator** hota hai. Yah IC 4G RX signal ko FEM se receive karke apne inbuilt PA se amplify karke WTR/SDR/RF transceiver tak bhejti hai. TX path me bhi amplify karke FEM → Antenna → Tower tak signal bhejne ka kaam karti hai. Isme VPA/VCC, VBAT, VIO aur RFFE Data/Clock pins hote hain jo iske proper function ke liye zaroori hain.",
+  "pins": {
+    "VPA/VCC": {
+      "description": "Power amplifier ko diya jata hai (0–4.2V). Yah voltage Power IC/APT IC se aata hai jo buck voltage banata hai.",
+      "function": "Yah voltage 4G signal strength ke hisaab se vary karta hai. Agar signal achha hai, to voltage kam ya zero rahega. Agar signal kamzor hai, to yah max 4.2V tak badh sakta hai tak ki behtar amplification ho sake."
+    },
+    "VBAT": "Analog voltage supply from battery",
+    "VIO": "1.8V digital voltage (CPU communication ke liye required)",
+    "RFFE_DATA": "CPU commands ke liye data line",
+    "RFFE_CLOCK": "Synchronization line for CPU communication"
+  },
+  "issues": [
+    {
+      "symptom": "4G signal receive nahi ho raha (2G/3G normal hain)",
+      "possible_causes": [
+        "PFO ka inbuilt PA kaam nahi kar raha",
+        "VPA/VCC voltage PA tak nahi ja raha",
+        "Power IC/APT IC buck conversion issue"
+      ],
+      "tests_diagnostics": [
+        "VPA/VCC voltage (0–4.2V) measure karo",
+        "Coil ke input/output switching aur feedback check karo",
+        "VBAT aur VIO supply verify karo"
+      ],
+      "solutions": [
+        "Power IC/APT IC repair/replace karo",
+        "PFO IC replace karo"
+      ]
+    },
+    {
+      "symptom": "Manual network search me operators list aati hai par register nahi hota",
+      "possible_causes": [
+        "Transmission complete nahi ho raha (PFO fault)",
+        "PFO TX path weak hai",
+        "VPA PA tak nahi ja raha"
+      ],
+      "analogy": "Yah problem PFO ke transmission fault ki wajah se ho sakti hai, aur same problem tab bhi aati hai jab phone ka IMEI number blacklisted ho. Dono cases me phone list dekh pata hai lekin register nahi kar pata."
+    },
+    {
+      "symptom": "Samsung phones me Half Flight Mode error",
+      "possible_causes": [
+        "RFFE Data/Clock communication fail",
+        "CPU ↔ PFO interface issue"
+      ],
+      "tests_diagnostics": [
+        "RFFE Clock/Data waveform observe karo",
+        "CPU–PFO line continuity check karo"
+      ],
+      "solutions": [
+        "RFFE line repair karo",
+        "CPU interface re-solder karo"
+      ]
+    },
+    {
+      "symptom": "Phone me No Service, lekin manual search me operator list show hoti hai",
+      "possible_causes": [
+        "Transmission complete nahi ho raha",
+        "PFO IC ka oscillator fail hai",
+        "IMEI number blacklisted hai"
+      ],
+      "tests_diagnostics": [
+        "IMEI status verify karo",
+        "TX path diode/continuity test karo",
+        "PFO supply lines check karo"
+      ],
+      "solutions": [
+        "IMEI unblacklist karo",
+        "TX path repair karo",
+        "PFO IC replace karo"
+      ]
+    },
+    {
+      "symptom": "Radio OFF problem",
+      "possible_causes": [
+        "PFO ko **RFFE Data** aur **Clock** ke through CPU se communication na milna.",
+        "VIO 1.8V digital supply missing (CPU se communication fail hone ka karan)."
+      ],
+      "tests_diagnostics": [
+        "VIO 1.8V regulator output check karo",
+        "RFFE waveform oscilloscope se verify karo"
+      ],
+      "solutions": [
+        "VIO line repair karo",
+        "RFFE communication lines re-solder karo"
+      ]
+    }
+  ]
+}
+{
+  "component": "PFO IC & WTR/SDR/Transceiver",
+  "description": "PFO IC ke paas laga PA Thermal resistor aur WTR/SDR/Transceiver IC me lage 51Ω resistor ke faults ke karan Radio Off, Baseband Unknown aur Network Signal related problems hoti hain.",
+  "issues": [
+    {
+      "symptom": "Radio Off",
+      "possible_causes": [
+        "WTR/SDR/Transceiver IC me 51Ω resistor kharab ya open ho jana"
+      ],
+      "tests_diagnostics": [
+        "51Ω resistor continuity aur value check karo"
+      ],
+      "solutions": [
+        "51Ω resistor replace karo"
+      ]
+    },
+    {
+      "symptom": "Baseband Unknown",
+      "possible_causes": [
+        "WTR/SDR/Transceiver IC me 51Ω resistor open ho jana",
+        "PFO IC ke PA Thermal resistor faulty hona"
+      ],
+      "tests_diagnostics": [
+        "Resistor diode/ohm value check karo",
+        "Thermal resistor ke continuity aur heat response check karo"
+      ],
+      "solutions": [
+        "51Ω resistor replace karo",
+        "PA Thermal resistor ko replace karo ya same value ka normal resistor use karke test karo"
+      ]
+    },
+    {
+      "symptom": "Network signal full dikhte hain lekin call karte hi dheere dheere kam hote hain aur No Service ho jata hai",
+      "possible_causes": [
+        "PFO IC ka PA Thermal resistor faulty hone ki wajah se overheating detection galat ho rahi hai"
+      ],
+      "tests_diagnostics": [
+        "Phone ko on karke signal strength observe karo (call ke time dheere dheere kam hote hain ya nahi)",
+        "PA Thermal resistor ka test karo"
+      ],
+      "solutions": [
+        "PA Thermal resistor ko replace karo",
+        "Temporary test ke liye same value ka normal resistor lagakar check karo"
+      ]
+    },
+    {
+      "symptom": "Kabhi full signal aata hai aur call proper hoti hai, kabhi No Service ho jata hai (bar-bar signal drop)",
+      "possible_causes": [
+        "PA Thermal resistor unstable ya faulty"
+      ],
+      "tests_diagnostics": [
+        "Network fluctuations observe karo (bar-bar signal drop ho raha hai ya nahi)"
+      ],
+      "solutions": [
+        "PA Thermal resistor replace karo",
+        "Thermal resistor ki jagah normal resistor use karke test karo"
+      ]
+    }
+  ]
+}
+
+now the thing is my raw kb contains multiple question on different topics , so i will going to send you questions on same topic one by one so that you can format it easily by understanding it. Also it is requested to suggest me formatting style if needed, because i am developing a rag based troubleshooting chatbot which handles the user query , which will be going to answer from the given kb , also the data which i got from my client is bit tricky , so please also analyse it

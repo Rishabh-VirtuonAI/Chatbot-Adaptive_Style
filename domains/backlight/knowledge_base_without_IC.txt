@@ -1,0 +1,519 @@
+[
+    {
+        "component": "Display Backlight - LED K1/K2 Lines",
+        "description": "Display ke andar lagi hui LED cathode lines (K1, K2) backlight control aur brightness ke liye important hoti hain. In lines me open ya short hone se backlight problems aati hain.",
+        "issues": [
+            {
+            "symptom": "Backlight missing (graphics visible but no light)",
+            "possible_causes": [
+                "LED K1/K2 line open ho jana",
+                "LED K1/K2 line disconnect from backlight IC"
+            ],
+            "tests_diagnostics": [
+                "Multimeter se LED K1/K2 continuity check karo",
+                "Check karo ki backlight IC output se K1/K2 connected hai ya nahi"
+            ],
+            "solutions": [
+                "LED K1/K2 line repair ya reconnect karo",
+                "Agar LED strip faulty hai to replace karo"
+            ],
+            "faq": {
+                "questions": ["LED_k1,K2 kya hota hai"],
+                "answers": [
+                "LED k1,k2 display ke andar lagi hui LEDs ka Cathode connection hai. Yah display backlight ki mahatvapoorna pin hai. Agar ye line backlight IC se disconnect ho jaye to display par backlight nahi aayegi, sirf graphics dikhenge."
+                ]
+            }
+            },
+            {
+            "symptom": "Brightness control not working (stuck at full brightness)",
+            "possible_causes": [
+                "LED K1/K2 line ground ke saath short ho jana"
+            ],
+            "tests_diagnostics": [
+                "Continuity test karo K1/K2 aur ground ke beech",
+                "Brightness adjust karke user input ke response ko observe karo"
+            ],
+            "solutions": [
+                "Shorted K1/K2 line ko repair karo",
+                "Faulty LED ya backlight circuit replace karo"
+            ],
+            "faq": {
+                "questions": ["LED k1,k2 se kya kya problem aati hai"],
+                "answers": [
+                "LED k1,k2 open hone se backlight nahi aayegi. Agar ground ke saath short ho jaye to backlight control disable ho jata hai. Brightness permanently fix ho jaata hai. User brightness adjust kare tab bhi brightness full hi rahegi."
+                ]
+            }
+            }
+        ]
+        }
+    
+    
+   {
+            "component": "I2C Communication - SCL Line",
+            "description": "SCL (Serial Clock Line) I2C protocol ka ek vital hissa hai jo devices ke beech timing aur synchronization ke liye use hota hai.",
+            "issues": [
+                    {
+                        "symptom": "Understanding SCL line in I2C communication",
+                        "possible_causes": [],
+                        "tests_diagnostics": [],
+                        "solutions": [
+                            "SCL line ek digital clock signal provide karti hai jo I2C master aur slave devices ke data exchange ko synchronize karta hai.",
+                            "Master device clock pulses generate karta hai aur Slave devices iske according data transmit/receive karte hain.",
+                            "SCL line par pull-up resistors lagaye jate hain jo ise default high state me rakhte hain."
+                        ]
+                        
+                    }
+                ]
+    },
+    
+    
+    {
+        
+        "component": "VIN Line (Voltage In)",
+        "description": "VIN ka full form 'Voltage In' hota hai. Yah device ko supply hone wala main voltage hota hai. Agar device ko VIN voltage na mile to device kaam nahi karega. Isliye VIN line ka short ya open hona avoid karna chahiye.",
+        "issues": [
+            {
+            "symptom": "Device power on nahi ho raha",
+            "possible_causes": [
+                "VIN voltage device tak nahi pahunch raha",
+                "VIN line short ya open ho jana"
+            ],
+            "tests_diagnostics": [
+                "VIN line continuity check karo",
+                "Power supply se VIN input volt verify karo"
+            ],
+            "solutions": [
+                "VIN line ki shorting/open ko repair karo",
+                "Ensure karo ki VIN proper voltage provide kar raha hai"
+            ],
+            "faq": {
+                "questions": ["VIN kya hai", "VIN ka full form kya hai"],
+                "answers": [
+                "VIN ka full form 'Voltage In' hota hai. Yah device ka main voltage hota hai. Agar VIN na mile to device kaam nahi karega. VIN short ya open nahi hona chahiye."
+                ]
+            }
+            },
+            {
+            "symptom": "VIN line short hone ki wajah se device on nahi ho raha",
+            "possible_causes": [
+                "VIN line kisi component ke short hone ki wajah se ground ho gayi"
+            ],
+            "tests_diagnostics": [
+                "VIN line par multimeter se short test karo",
+                "Required voltage aur 5A current DC power supply se inject karke shorted component ko trace karo",
+                "Rosin ya Kapoor ka smoke PCB par spread karke heating component identify karo"
+            ],
+            "solutions": [
+                "Jo bhi component short hoga usse replace karo",
+                "VIN line shorting remove karke device ko restore karo"
+            ],
+            "faq": {
+                "questions": ["VIN line short hai to kya karna chahiye"],
+                "answers": [
+                "Agar VIN line short hai to sabse pehle VIN ke voltage ka pata karo. DC power supply se required voltage aur 5 Ampere ke saath VIN line par inject karo. Rosin ya Kapoor ka smoke PCB par spread karo. Jis component me short hoga wo heat hoga. Us shorted component ko replace karne se VIN line ki shorting remove ho jayegi aur problem solve ho jayega."
+                ]
+            }
+            }
+        ]
+    },
+
+     {
+        "component": "OVP (Over Voltage Protection) Line",
+        "description": "OVP ka full form 'Over Voltage Protection' hota hai. Yah charging aur light sections me over voltage se devices ko protect karta hai. Agar OVP line open ya short ho jaye to charging IC aur backlight LEDs ki protection compromise ho sakti hai.",
+        "issues": [
+            {
+            "symptom": "Over voltage detection aur protection required",
+            "possible_causes": [
+                "OVP line break (open) ya short"
+            ],
+            "tests_diagnostics": [
+                "OVP line continuity check karo",
+                "Charging IC aur backlight circuit me voltage monitoring karo"
+            ],
+            "solutions": [
+                "OVP line ko repair/reconnect karo",
+                "Ensure karo ki OVP line intact hai aur over voltage detection proper kaam kar raha hai"
+            ],
+            "faq": {
+                "questions": ["OVP kya hota hai"],
+                "answers": [
+                "OVP ka full form Over Voltage Protection hota hai.Yah OVP charging section aur light section me dekhne ko milta hai. Charging section me iska kaam hai over voltage detect hone par charging IC tak high voltage jaane se rokna jisse charging IC protect ho sake.Light section me iska kaam hai backlight circuit me boost voltage ko jarurat se jaada generate na hone dena. Agar boost voltage jarurat se jada generate ho to backlight IC ki switching ko control karwa kar display ki LEDs ko protect karna jisse ki display ki backlight LEDs secure rahe.Agar yah line break (open) ho jaaye to backlight voltage boost nahi honge. Isliye OVP line open ya short nahi honi chahiye."
+                ]
+            }
+            }
+        ]
+        },
+    
+        {
+        "component": "SW/LX Pins (Switch Lines)",
+        "description": "SW/LX ka full form 'Switch' hota hai. Ye alag-alag sections me use hota hai jaise charging section, light section, graphics section, Buck section, Boost section etc. Iska kaam switching karana hai jisse kabhi boost voltage aur kabhi buck voltage generate hoti hai. Coil (inductor) ke saath connect hone par hi ye buck/boost operation perform kar sakti hai.",
+        "issues": [
+            {
+            "symptom": "Switching pins ke through voltage generation",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "faq": {
+                "questions": ["SW kya,LX hota hai"],
+                "answers": [
+                "SW,LX ka full form 'Switch' hota hai. Yah alag-alag section me hota hai jaise charging section, light section, graphics section, Buck section, Boost section etc. 
+                Iska kaam hai switching karana jisse kabhi yah boost voltage generate karwati hai to kabhi yah buck voltage generate karwa rahi hoti hai. 
+                Is pin ke saath koi coil (inductor) connect hogi tabhi yah buck ya boost operation perform kar sakti hai."
+                ]
+            }
+            }
+        ]
+        },
+    
+        {
+        "component": "SW/LX Pins (Switch Lines)",
+        "description": "SW/LX ka full form 'Switch' hota hai. Ye alag-alag sections me use hota hai jaise charging section, light section, graphics section, Buck section, Boost section etc. Iska kaam switching karana hai jisse kabhi boost voltage aur kabhi buck voltage generate hoti hai. Coil (inductor) ke saath connect hone par hi ye buck/boost operation perform kar sakti hai.",
+        "issues": [
+            {
+            "symptom": "Section me switching kaam nahi kar raha (boost/buck voltage generate nahi ho raha)",
+            "possible_causes": [
+                "SW/LX line open ho jana",
+                "SW/LX line short ho jana"
+            ],
+            "tests_diagnostics": [
+                "SW/LX line continuity check karo",
+                "Section ke boost/buck operation monitor karo"
+            ],
+            "solutions": [
+                "SW/LX line repair/reconnect karo",
+                "Ensure karo ki line properly connected hai aur short/open nahi hai"
+            ],
+            "faq": {
+                "questions": ["SW,LX ke open ya short hone se kya problem aati hhai"],
+                "answers": [
+                "SW,LX open ya short hone se jis section ki yah line hai us section me switching karana band kar degi, jisse circuit ke section ke according boost ya buck nahi banega. Isliye is line ka sahi hona jaruri hai. Yah line short ya open nahi hona chahiye."
+                ]
+            }
+            }
+        ]
+        },
+    
+        {
+        "component": "Shorted Line Troubleshooting",
+        "description": "Shorting remove karne ke liye proper voltage aur method ka pata hona zaruri hai. DC power supply se shorted line me voltage inject karke shorted component identify kiya ja sakta hai.",
+        "issues": [
+            {
+            "symptom": "Shorted line ki wajah se circuit kaam nahi kar raha",
+            "possible_causes": [
+                "Line open ya short ho jana"
+            ],
+            "tests_diagnostics": [
+                "Jis line me shorting hai us line ka voltage check karo",
+                "Rosin ya Kapoor ka smoke PCB par spread karke DC voltage aur 5 Ampere current se shorted component identify karo"
+            ],
+            "solutions": [
+                "Required voltage set karke DC power supply se shorted line me inject karo",
+                "Shorted component ko replace karo jisse line ki shorting remove ho aur circuit restore ho"
+            ],
+            "faq": {
+                "questions": ["shorting kaise nikale koi upay bataiye"],
+                "answers": [
+                "Shorting nikalne ke liye apko jis section me shorting hai us section ki us line ke voltage ko janna jaruri hai ki jo line short hai woh kitne volt ki line hai.Yah isliye janna jaruri hai kyoki jab ham kisi shorted line ki shorting ko remove karte hai to hamko shorted line ko DC power supply machine se voltage inject karke shorted components ko dhunda jaata hai.Agar apko yah pata hai ki shorted line kitne volt ki hai to sabse pehle apko rosin ya kapoor ka smoke PCB par spread karna hai aur DC power supply machine me required voltage set karke 5 ampere ke saath shorted line me inject karna hai jisse jo component short ho woh heat hokar apko dikh jayega jisko change karke ap fault ko solve kar sakte hai."
+                ]
+            }
+            }
+        ]
+        },
+    
+        {
+        "component": "Shorted Line Troubleshooting Methods",
+        "description": "Shorted line ko identify aur remove karne ke liye multiple methods use kiye jaate hain. In methods se shorted component ko detect aur repair kiya ja sakta hai.",
+        "issues": [
+            {
+            "symptom": "Shorted line ya leakage identify karna aur remove karna",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "faq": {
+                "questions": [
+                "shorting kaise nikale",
+                "shorted component ko kaise identify karen",
+                "shorting nikalne ke kya kya upay hai",
+                " "
+                ],
+                "answers": [
+                "1. Rosin method , 2. Kapoor Method , 3. Thinner (AC Tone) Method , 4. Freeze Spray Method , 5. Short Killer Method , 6 Thermal Camera Method , 7. Reverse volt injection method , 8. OHM mode method./n",
+                "In sabhi method se shorting aur leakage ko aasani se nikala ya identify kiya ja sakta hai./n",
+                "Method 1: Rosin method - Motherboard par Rosin ka smoke spread karo. Required voltage DC supply se inject karo. Shorted component heat hoga aur smoke pighal jayegi, jis se shorted component identify ho jayega./n",
+                "Method 2: Kapoor method - Motherboard par Kapoor ka smoke spread karo. Required voltage DC supply se inject karo. Shorted component heat hoga aur Kapoor smoke pighal jayegi, jis se shorted component identify ho jayega./n",
+                "Method 3: Thinner method - AC Tone (Thinner) ko motherboard par dalen. Required voltage DC supply se inject karo. Shorted component heat hoga aur thinner evaporate hoga, jis se shorted component identify ho jayega./n",
+                "Method 4: Freeze Spray method - Motherboard par freeze spray karo jisse components ka temperature minus me chala jayega. DC voltage inject karne par shorted component heat hoga aur ice pighal kar shorted component visible ho jayega./n"
+                ]
+            }
+            },
+            {
+            "symptom": "Freeze Spray Method specific use",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "faq": {
+                "questions": ["Freeze spray method ya tareeka kya hai"],
+                "answers": [
+                "Freeze spray method me motherboard par freeze spray karna padega jisse saare components ka temperature minus me chala jayega aur motherboard me ice jam ho jayega. Fir shorted line par DC machine se required voltage set karke inject karenge. Shorted component heat hoga aur ice pighal kar shorted component aasani se dikh jayega."
+                ]
+            }
+            },
+            {
+            "symptom": "Thinner Method specific use",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "faq": {
+                "questions": ["Thinner method kya hai"],
+                "answers": [
+                "Thinner method ke liye motherboard par AC Tone (Thinner) ko dalna hoga. Sare components thinner me bheeg jayenge. DC power supply se required voltage set karke inject karenge. Shorted component heat hoga aur component ke aaspaas ka thinner evaporate hoga, jis se shorted component identify ho jayega."
+                ]
+            }
+            },
+            {
+            "symptom": "Kapoor Method specific use",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "faq": {
+                "questions": ["kapoor method kya hai"],
+                "answers": [
+                "Kapoor method apply karne ke liye motherboard par Kapoor ka smoke spread karo. Required voltage DC supply se inject karo. Shorted component heat hoga aur Kapoor smoke pighal jayegi, jis se shorted component aasani se identify ho jayega."
+                ]
+            }
+            },
+            {
+            "symptom": "Short Killer Method use",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "faq": {
+                "questions": [
+                "short Killer ko kaise use karte hai",
+                "short killer method kya hai",
+                "short killer ko use karne ka tareeka bataiye"
+                ],
+                "answers": [
+                "Short Killer ek high ampere output machine hai. Isme 2 probe hote hai (positive aur negative). DC power supply ki tarah required voltage set karke shorted line par inject karte hai. High current output ki wajah se shorted component turant burn ho jata hai aur shorting remove ho jaati hai. Yah method thoda risky hai kyoki high ampere output se internal line open ho sakti hai ya layer burn ho sakti hai. Isliye savdhani se use karein."
+                ]
+            }
+            }
+        ]
+        },
+   
+        {
+        "component": "Thermal Camera for Shorting Detection",
+        "description": "Thermal camera ek sensitive device hai jo PCB par heat detect karke shorting aur leakage identify karne me help karta hai. Jab PCB ya component me overheating hoti hai, thermal camera us area ko visible images me dikhata hai, jisse fault jaldi aur accurately find kiya ja sakta hai.",
+        "issues": [
+            {
+            "symptom": "Shorting ya leakage detect karna",
+            "possible_causes": [],
+            "tests_diagnostics": [
+                "PCB par thermal camera se scan karke garam areas identify karo",
+                "Agar thermal camera se shorting detect nahi ho rahi hai to connected ICs ko nikal kar check karo"
+            ],
+            "solutions": [
+                "Shorted ICs ko reball karo agar IC balls short ho gaye hain. DC machine se 5V, 5A voltage inject karke shorted line check karo (dhyan rahe line me koi IC connected na ho). Agar isse bhi shorting remove nahi hoti, to reverse voltage method apply karo. Phir bhi shorting na remove ho to motherboard internal short hai, motherboard replace ya repair karo."
+            ]
+            
+            }
+        ]
+        }
+    ,
+   
+        {
+        "component": "Reverse Voltage (Ulta Volt Injection) Method",
+        "description": "Reverse voltage method ek alternate technique hai jo shorted line identify aur remove karne me use hoti hai. Isme voltage inject karne ka polarity reverse hota hai, jisse shorted component easily detect ho jata hai.",
+        "issues": [
+            {
+            "symptom": "Shorting identify aur remove karna jab normal methods fail ho jaye",
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [
+                "Reverse voltage method apply karo: negative pin ko shorted line par aur positive pin ko ground se connect karo",
+                "Required voltage inject karte hi shorted component aasani se detect ho jayega"
+            ],
+            "faq": {
+                "questions": ["shorting remove karne ka aur aasan tareeka kya hai"],
+                "answers": [
+                "Agar apne bahut se tareeke use karke dekh liye hai tab bhi shorting identify nahi ho rahi hai to aap reverse voltage method ka use kar sakte hai. Is method me jo line short hai us par required voltage inject karna hai. Isme voltage inject karne ka tareeka change hota hai: negative pin line par aur positive pin ground se connect hota hai. Jab reverse voltage apply karte hai to shorted component aasani se detect ho jaata hai."
+                ]
+            }
+            }
+        ]
+        },
+ 
+        {
+        "component": "OHM Mode Method for Minor Leakage Detection",
+        "description": "Minor leakage aur auto current readings (4–5, 40–45) me thermal camera aur OHM mode method use kiya ja sakta hai. Thermal camera latest device hai jo mamuli leakage detect karne me aasani deta hai. Agar thermal camera se leakage detect na ho, tab OHM mode method apply kiya ja sakta hai.",
+        "issues": [
+            {
+            "symptom": "Minor leakage ya high auto current reading par leakage detect karna",
+            "possible_causes": [],
+            "tests_diagnostics": [
+                "Thermal camera se shorted/ leakage area scan karo",
+                "Multimeter ko OHM mode me set karo aur shorted line par ohm value observe karo",
+                "Motherboard SMD machine se 250°C par heat karo aur multimeter me value change monitor karo"
+            ],
+            "solutions": [
+                "Shorted area identify karne ke baad iron se components ko sequentially touch karo. Jo component touch karte hi ohm value change ho, wahi leakage component hai. Leakage component remove ya repair karo, jisse phone ki leakage remove ho jayegi"
+            ]
+           
+            }
+        ]
+    },
+    {
+        "component": "OHM Mode Method for Minor Leakage Detection",
+        "description": "Minor leakage aur auto current readings (4–5, 40–45) me thermal camera aur OHM mode method use kiya ja sakta hai. Thermal camera latest device hai jo mamuli leakage detect karne me aasani deta hai. Agar thermal camera se leakage detect na ho, tab OHM mode method apply kiya ja sakta hai.",
+        "issues": [
+            {
+            "symptom": "Minor leakage ya high auto current reading par leakage detect karna",
+            "possible_causes": [],
+            "tests_diagnostics": [
+                "Thermal camera se shorted/ leakage area scan karo",
+                "Multimeter ko OHM mode me set karo aur shorted line par ohm value observe karo",
+                "Motherboard SMD machine se 250°C par heat karo aur multimeter me value change monitor karo"
+            ],
+            "solutions": [
+                "Shorted area identify karne ke baad iron se components ko sequentially touch karo. Jo component touch karte hi ohm value change ho, wahi leakage component hai. Leakage component remove ya repair karo, jisse phone ki leakage remove ho jayegi"
+            ]
+           
+            }
+        ]
+    },
+    {
+  "component": "Backlight Circuit Diagnostic (AL65 Driver)",
+  "description": "Yeh diagnostic procedure AL65 series light driver IC ke istemal wale TFT displays mein 'No Backlight' issue ko solve karne ke liye hai. Isme VPH, PWM, Coil value aur Feedback lines (K1/K2) ki step-by-step checking shamil hai.",
+  "issues": [
+    {
+      "symptom": "Graphics dikhai de rahe hain magar light nahi aa rahi hai (No Backlight on TFT)",
+      "possible_causes": [
+        "VPH voltage ka LED_A line tak na pahunchna (Resistor open hona)",
+        "Light Driver IC (AL65) ki VPH/VIN (Pin 6 & 4) requirements poori na hona",
+        "PWM signal ka theek na milna (Pin 5)",
+        "Boost Coil (Inductor) ki Henry value kam ho jaana",
+        "K1/K2 Feedback line ka ground se hat jaana (Resistor ki value increase hona)"
+      ],
+      "diagnostic_procedure": [
+        "Sabse pehle check karein ki display kis type ka hai: TFT ya OLED.",
+        "Agar TFT hai, toh display connector par LED_A ki line par VPH voltage (3.7V se 4.2V) check karein (bina phone on kiye).",
+        "Agar 3.7V-4.2V mil rahe hain, toh Light Driver IC ka model identify karein (Jaise: AL65).",
+        "Agar AL65 IC lagi hai, toh uski Pin number 6 aur Pin number 4 par VPH voltage (3.7V se 4.2V) check karein.",
+        "Agar VPH/VIN voltage ok hai, toh Pin number 5 par PWM Signal voltage (0.3V se 1.8V) check karein (yeh variable hota hai).",
+        "Agar PWM voltage ok hai, toh light section mein lagi Coil (Inductor) ki Henry value check karne ke liye LCR Multimeter use karein (Value: 4.7uH to 10uH honi chahiye).",
+        "Agar Coil value theek hai, toh light IC ki Pin number 1 se LCD connector tak jaane wali K1/K2 line ko check karein. Iske liye multimeter ko Diode Mode mein set karke 4 se 11 ki reading check karein (Resistor par 5 ya 10 ohm ka laga hota hai).",
+        "Agar K1/K2 reading ok hai, toh light IC ke VIN pin number 6 par aane wali VPH voltage ki line mein lagi Fusible Resistor ke dono taraf voltage check karein (dono taraf same VPH voltage milna chahiye).",
+        "Agar fusible resistor ke dono taraf voltage different hai, toh multimeter ko Ohm Mode mein set karke us resistor ki value check karein."
+      ],
+      "tests_diagnostics": [
+        "LED_A line par 3.7V-4.2V VPH voltage check karein (Multimeter/DC Mode).",
+        "Light Driver IC (AL65) ki Pin 6 aur Pin 4 par 3.7V-4.2V VPH voltage check karein.",
+        "AL65 IC ki Pin 5 par 0.3V-1.8V PWM variable signal check karein.",
+        "Boost Coil ki value LCR Multimeter se check karein (Expected: 4.7uH to 10uH).",
+        "Light IC Pin 1 par Diode Mode mein 4 se 11 ki reading check karein.",
+        "Fusible resistor ke dono taraf voltage check karein (Expected: Both sides VPH voltage, e.g., 4.2V/4.2V).",
+        "Fusible resistor ki value Ohm Mode mein check karein (Expected: 0 Ohm)."
+      ],
+      "solutions": [
+        "Agar LED_A line par VPH voltage nahi mil raha toh line mein laga open resistor repair karein.",
+        "Agar Coil ki value kam hai, toh use 4.7uH se 10uH wali coil se replace karein.",
+        "Agar K1/K2 line ki reading high ho toh resistor ko resold ya change karein.",
+        "Agar Fusible Resistor ki value increase ho gayi hai (e.g., 317kΩ), toh uss resistor ko remove karke 0 Ohm ki doosri resistor laga dijiye. (Yahi final fault tha)."
+      ]
+    }
+  ]
+}
+
+
+
+    
+       
+]
+
+// code example 
+Ai.
+Hello Rishabh aapka welcome hain mooxy chat service main. Ab apki behtar sahayata ke liye mujhe apke phone me lagi light driver ic ka number bataiye taki mai apke fault ko resolve karwa saku.
+
+User:
+Sir mere is phone me AL65 light ic lagi Hui hai.
+
+Ai.
+Bahut bahut dhanyawad aapka ye btane ke liye. Ab kya main apse apki problem jaan sakta hu.
+
+User
+.Hello sir mere pas ek phone hai redmi 6A jisme backlight nhi a rahi hai kya kru ?
+
+Ai
+Rishabh apke pass redmi ka 6A hai jisme light ki problem hai. Isme mai apki help karunga uske liye aap mujhe bataiye aap backlight repair karne ke liye kya kya kar chuke hai.
+
+User.
+Sir maine abhi tak to kuchh nhi Kiya hai lekin aap mujhe bataiye ki mai start kaha se karu.
+
+Ai.
+Ok apne mujhe bataya ki apne abhi tak backlight problem repair karne ke liye koi bhi action nhi liya hai.
+Chaliye step by step repair karte hai.
+
+1. Aap mujhe ye bataiye ki display connector par LED_A ki pin par kitna diode value aa raha hai.
+2. Diode value check karne ke liye multimeter ko diode mode me set karna padega.
+
+User:
+Sir LED_A ki pin par 0.349 diode value mil rahi hai.
+
+Ai:
+Congratulations apki batayi hui diode value ek dam theek hai. ab ham step 2 follow karenge.
+
+Step 2:
+Ab apko LED_A ki pin par Hot testing karna hai hot testing ke liye multimeter ko DC voltage mode me set karna padega aur us pin par voltage check karna hai jo 3.1 to 4.2v tak aana chahiye.
+
+User:
+Sir iss pin par 3.7v mil raha hai.
+
+Ai:
+Congratulations yaha voltage bhi ok hai.
+Ab ham next step follow karenge.
+
+Step 3:
+Rishabh apke 6A me LED_A ki line me Diode value ( GR ) aur voltage ek dam theek hai.
+Ab apko light driver ic ke pass lagi Boost Coil ( inductor) ki value test karke batana hai jo ki 4.7UH ya 10UH ya 22UH honi chahiye.
+
+User:
+Sir isme 8.33UH value mil rahi hai kya ye theek hai.
+
+Ai:
+Yes ye value ek dam theek hai kyoki electronics me har ek components ka ek tolerance value hoti jaise +5% -5% yah value 1 se 20 percent tak ho sakti hai.
+Isliye 10UH ki jagah 8.33UH bhi theek hi mani jayegi.
+
+User:
+Achha theek hai sir ab kya karu.
+
+Ai:
+Ab apko isi LED_A ki line me lage zero ohm ki resistor check karna hai jo vph_pwr/vsys se light driver ic aur boost coil ke beech judi hoti hai aur ek zero ohm ki resistor LED_A ki line me ek dam last me display connector ke pass lagi hoti hai in dono resistor ko dry sold ya burning ke liye check karna hai.
+
+User:
+Ok sir
+
+User:
+Sir dono resistor ek dam theek hai na koi dry sold hai aur na koi resistor burn hui hai.
+
+Ai:
+Rishabh burning resistor to ankho se dikh sakti hai lekin  apne dry sold kaise verify Kiya ki ye dono resistor dry sold nhi hai.
+
+User:
+Dekhne se to ek dam sahi se sold dikh rahi hai sir.
+
+Ai:
+Rishabh is tarah se apko confusion ho sakta hai apko iss tarah se dry sold check nhi karna hai apko seedha resistor ko resold kar dena hai taki agar dry sold ho bhi tab bhi theek ho jaye.
+
+User:
+Ok sir thanks mai karta hu.
+
+Ai:
+Ok mai apke reply ka wait kar raha hu.
+
+User:
+Sir maine dono resistor ko resold kar diya fir bhi same condition hai ab kya karu.
+
+
+Ai:
+Rishabh ab mai apse AL65 ic ki har ek pin ko check karwaunga aur ham dono milkar finally fault find kar lenge aur apki problem ko solve kar lenge
+

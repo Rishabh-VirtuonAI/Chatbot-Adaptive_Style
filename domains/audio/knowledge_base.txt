@@ -1,0 +1,15 @@
+## Audio Updates and Issues
+
+### Audio3
+
+*   **Q:** What is the status of audio3?
+*   **A:** Not specified.
+
+### Audio4
+
+*   **Q:** Has audio4 been updated recently?
+*   **A:** Yes, it has been updated.
+
+### Audio5 to 14
+
+*   Each audio from 5 to 14 is listed as "is .." without further information.

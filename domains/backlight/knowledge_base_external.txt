@@ -1,0 +1,25 @@
+### TIER 1: EXTERNAL DIAGNOSTIC STEPS (PRE-IC)
+
+STEP_1: [Display Connector LED_A Pin - Cold Testing]
+- Action: Multimeter in Diode Mode.
+- Normal Range: 0.300 to 0.700 GR.
+- If Low/Zero: Check for shorting in parallel capacitors.
+- If High/0L: Check for open line or blown series resistors.
+
+STEP_2: [Display Connector LED_A Pin - Hot Testing]
+- Action: Phone ON, Multimeter in DC 20V.
+- Normal Range: 3.1V to 4.2V (VPH/VBAT Level).
+- Note: This confirms power is reaching the connector through the Coil and Diode.
+- If 0V: Power path is broken; check Boost Coil and Diode continuity.
+
+STEP_3: [Boost Coil (Inductor) Verification]
+- Action: Check physical condition and inductance value.
+- Specs: 4.7uH, 10uH, or 22uH (Tolerance +/- 20% allowed).
+- Example: 8.33uH is acceptable for a 10uH coil.
+- If Burnt/Low: Replace the coil.
+
+STEP_4: [Series Resistors & Dry Soldering]
+- Action: Check Zero-Ohm resistors on VPH_PWR and LED_A lines.
+- Logic: Visual inspection is not enough. 
+- Requirement: Proactively "Resolder" (Dry solder fix) these resistors even if they look okay.
+- Transition: If problem persists after resoldering, move to Tier 2 (IC Pinout).

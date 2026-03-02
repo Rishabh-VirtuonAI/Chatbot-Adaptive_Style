@@ -1,0 +1,485 @@
+{
+    {
+        {
+            "symptom": "LED k1, k2 issue",
+            "issues": [
+                "LED k1 k2 issue kya hai",
+                "LED k1 k2 open hone par kya hota hai",
+                "LED k1 k2 ground short hone par kya problem hoti hai",
+                "LED k1 k2 line disconnect hone par kya hota hai",
+                "backlight nahi aane ka reason LED k1 k2 ho sakta hai kya"
+            ],
+            "possible_causes": [
+                "LED k1, k2 line disconnect hone par backlight IC se connection toot jata hai",
+                "LED k1, k2 open hone par backlight nahi aati",
+                "LED k1, k2 ground ke saath short hone par backlight control nahi hota"
+            ],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "knowledge_facts": [
+                "LED k1, k2 display ke andar lagi hui LEDs ke cathode ka connection hota hai",
+                "Yeh display backlight ki mahatvapurn pin hai",
+                "Disconnect hone par sirf graphics dikhte hain, backlight nahi aati",
+                "Ground short hone par brightness permanent fix ho jata hai aur user brightness control nahi kar pata"
+            ]
+        }
+    },
+    {
+        {
+            "symptom": "SCL (Serial Clock Line) issue / explanation",
+            "issues": [
+                "SCL (Serial Clock Line) issue kya hai",
+                "SCL (Serial Clock Line) open hone par kya hota hai",
+                "SCL (Serial Clock Line) ground short hone par kya problem hoti hai",
+                "SCL (Serial Clock Line) line disconnect hone par kya hota hai",
+                "backlight nahi aane ka reason SCL (Serial Clock Line) ho sakta hai kya",
+                "SCL line kya hai?",
+                "SCL line ka function kya hota hai?",
+                "SCL line short ya open ho jaye toh kya hoga?",
+                "I2C mein SCL line ka role kya hai?",
+                "SCL line ke bina data transfer kyun fail ho jata hai?"
+            ],
+            "possible_causes": [],
+            "tests_diagnostics": [],
+            "solutions": [],
+            "knowledge_facts": [
+                "SCL ya Serial Clock line, I2C (Inter-Integrated Circuit) communication protocol ka ek important component hai.",
+                "SCL line Master device dwara generate kiya gaya clock signal Slave devices tak transmit karti hai.",
+                "Clock signal ke pulses data bits ko synchronize karte hain aur batate hain ki data kab transmit/receive hoga.",
+                "SCL line bi-directional hoti hai, jisme Master aur Slave dono clock signal bhej sakte hain.",
+                "Logical levels (High = 1, Low = 0) clock signal ke voltage states ko represent karte hain.",
+                "Pulse width aur frequency data transmission speed aur timing ko define karte hain.",
+                "I2C mein start condition tab hoti hai jab SCL par High se Low transition hota hai, aur stop condition Low se High par hoti hai.",
+                "SCL line par pull-up resistors hote hain jo ise default high state mein rakhte hain.",
+                "SCL line synchronization aur sahi timing ke liye crucial hai, bina iske devices ke beech data exchange sahi nahi hoga."
+            ]
+        }
+    },
+    {
+        {
+            "symptom": ["VIN line short hai to kya karna chahiye","VIN kya hai"],
+            "issues": [
+                "VIN line kya hai?",
+                "VIN line ka function kya hota hai?",
+                "VIN line short ya open ho jaye toh kya hoga?",
+                "VIN line ke bina device kaam kyun fail ho jata hai?",
+                "VIN line kya hoti hai?",
+                "VIN line ka function kya hai?",
+                "VIN line short hone par kya hoga?",
+                "VIN line open hone par kya hoga?",
+                "VIN line ko kaise test karein?"
+            ],
+            "possible_causes": [
+                "VIN (Voltage In) device ko main supply provide karta hai.",
+                "Agar VIN line short ho jaye to device power on nahi karega.",
+                "Agar VIN line open ho jaye to bhi device kaam nahi karega."
+            ],
+            "tests_diagnostics": [
+                "VIN line ka voltage level check karo.",
+                "DC power supply se required voltage aur 5A ke saath inject karo.",
+                "Rosin ya kapoor ka smoke PCB par spread karke observe karo.",
+                "Heat hone wale component ko identify karo (shorted component trace karne ke liye)."
+            ],
+            "solutions": [
+                "VIN line par shorted component ko replace karo.",
+                "Ensure karo ki VIN line open/short na ho.",
+                "Faulty component replace karne ke baad VIN line ki continuity verify karo."
+            ],
+            "knowledge_facts": [
+                "VIN ka full form 'Voltage In' hai.",
+                "Yah device ka main voltage hota hai, bina iske device kaam nahi karega.",
+                "VIN line short hone par device power on nahi karega.",
+                "VIN line open hone par bhi device kaam nahi karega."
+            ]
+        }
+    },
+    {
+        {
+            "symptom": "OVP (Over Voltage Protection) explanation",
+            "issues": [
+                "OVP kya hai?",
+                "OVP line ka function kya hai?",
+                "OVP charging section me kya karta hai?",
+                "OVP backlight section me kya karta hai?",
+                "Agar OVP line open ho jaye to kya hoga?",
+                "Agar OVP line short ho jaye to kya hoga?"
+            ],
+            "possible_causes": [
+                "OVP line open ho jaye to backlight voltage boost nahi hoga.",
+                "OVP line short ho jaye to backlight control proper nahi hoga."
+            ],
+            "tests_diagnostics": [],
+            "solutions": [
+                "Ensure karo ki OVP line na to open ho aur na hi short."
+            ],
+            "knowledge_facts": [
+                "OVP ka full form 'Over Voltage Protection' hai.",
+                "OVP charging section aur light (backlight) section me use hota hai.",
+                "Charging section me iska kaam hai over voltage detect hone par charging IC tak high voltage jane se rokna, jisse charging IC protect ho sake.",
+                "Light section me iska kaam hai backlight circuit me boost voltage ko jarurat se jyada generate hone se rokna.",
+                "Agar boost voltage jyada generate ho to OVP backlight IC ki switching ko control karta hai aur display LEDs ko protect karta hai.",
+                "Agar OVP line break (open) ho jaye to backlight voltage boost nahi hoga.",
+                "Isliye OVP line ka open ya short hona device ke liye harmful hai."
+            ]
+        }
+
+    },
+    {
+        {
+            "symptom": "SW/LX line explanation and fault cases",
+            "issues": [
+                "SW/LX line kya hai?",
+                "SW/LX line ka function kya hota hai?",
+                "SW/LX line open ya short ho jaye toh kya hoga?",
+                "SW/LX line ke bina section kaam kyun fail ho jata hai?",
+                "SW/LX line short hone par kya hoga?",
+                "SW/LX pin ke saath coil kyon connected hota hai?",
+                "SW/LX line kin sections me use hoti hai?"
+            ],
+            "possible_causes": [
+                "Agar SW/LX line open ho jaye to switching band ho jayegi aur required boost/buck voltage generate nahi hoga.",
+                "Agar SW/LX line short ho jaye to bhi section switching fail ho jayegi."
+            ],
+            "tests_diagnostics": [],
+            "solutions": [
+                "Ensure karo ki SW/LX line open ya short na ho."
+            ],
+            "knowledge_facts": [
+                "SW ya LX ka full form 'Switch' hai.",
+                "Ye alag-alag sections me hoti hai jaise charging, light, graphics, buck, boost etc.",
+                "Iska kaam hai switching karna, jisse kabhi boost voltage generate hota hai aur kabhi buck voltage.",
+                "SW/LX pin ke saath hamesha ek coil (inductor) connected hota hai, tabhi ye buck/boost operation perform kar sakta hai.",
+                "SW/LX line open hone par switching band ho jati hai.",
+                "SW/LX line short hone par bhi circuit ka boost/buck operation fail ho jata hai.",
+                "Isliye SW/LX line ka sahi hona zaruri hai."
+            ]
+        }
+    },
+    {
+        {
+            "symptom": "Shorted line in circuit",
+            "issues": [
+                "Shorted line kya hai?",
+                "Shorted line ka function kya hota hai?",
+                "Shorted line open ya short ho jaye toh kya hoga?",
+                "Shorted line ke bina section kaam kyun fail ho jata hai?",
+                "Shorted line short hone par kya hoga?",
+                "Shorted line ke bina section kaam kyun fail ho jata hai?",
+                "Shorted line short hone par kya hoga?",
+                "Shorted line ke bina section kaam kyun fail ho jata hai?",
+                "Shorted line kaise identify karein?",
+                "Shorted line ka voltage kaise measure karein?",
+                "Shorted line me DC power supply kyon inject karte hain?",
+                "Shorted component ko kaise detect karein?",
+                "Shorted line ka solution kya hai?"
+            ],
+            "possible_causes": [
+                "Kisi section me line short ho gayi hai, jiski wajah se circuit ka normal operation fail ho raha hai."
+            ],
+            "tests_diagnostics": [
+                "Rosin ya kapoor ka smoke PCB par spread karke component heating observe karo.",
+                "DC power supply se required voltage aur 5A current ke saath shorted line me voltage inject karke shorted component identify karo.",
+                "Shorted line ke voltage ko measure karo taki pata chale ki line kis voltage ki hai.",
+                
+                
+            ],
+            "solutions": [
+                "Shorted component ko replace karo ya repair karo.",
+                "Shorted line par sahi voltage inject karke short remove karo."
+            ],
+            "knowledge_facts": [
+                "Shorting remove karne ke liye pehle shorted line ka voltage jaan na zaruri hai.",
+                "DC power supply se voltage inject karke shorted component identify kiya ja sakta hai.",
+                "Heating se shorted component ka pata chal jata hai, jise replace karke fault solve kiya ja sakta hai."
+            ]
+        }
+    },
+    {
+        {
+            "symptom": "Circuit shorting or leakage",
+            "issues:["shorting kaise nikale","shorted component ko kaise identify karen","shorting nikalne ke kya kya upay hai","shorting nikalne ke Tips and Tricks bataiye "],
+            "possible_causes": [
+                "Line me short ya leakage ki wajah se circuit properly kaam nahi kar raha hai."
+            ],
+            "tests_diagnostics": [
+                "Circuit me shorting ya leakage ko identify karne ke liye different methods use kiye ja sakte hain.",
+                "Shorted component ka pata lagana aur line ki proper functioning verify karna zaruri hai."
+            ],
+            "solutions": [
+                "Rosin method",
+                "Kapoor method",
+                "Thinner (Acetone) method",
+                "Freeze Spray method",
+                "Short Killer method",
+                "Thermal Camera method",
+                "Reverse voltage injection method",
+                "OHM mode method"
+            ],
+            "knowledge_facts": [
+                "In sabhi methods se shorting aur leakage ko aasani se identify ya remove kiya ja sakta hai."
+            ]
+        }
+    },
+    {
+        {
+            [
+                {
+                    "symptom": "Rosin Method",
+                    "issues": [
+                        "Rosin Method kya hai?",
+                        "Rosin Method ka use kyon kiya jata hai?",
+                        "Rosin Method se shorted component kaise detect hota hai?",
+                        "Rosin Method me voltage kitna inject karna chahiye?",
+                        "Rosin smoke melt hone ka matlab kya hai?",
+                        "Rosin Method aur Kapoor Method me kya difference hai?"
+                    ],
+                    "possible_causes": [
+                    "PCB ke kisi section me short ya leakage jo shorted component ko identify karna zaruri hai"
+                    ],
+                    "tests_diagnostics": [
+                    "Motherboard par Rosin smoke spread karo taki sare components smoke se dhak jayein",
+                    "DC power supply me shorted line ki nominal voltage set karo (jo line kitne volt ki hai utna voltage)",
+                    "Required voltage inject karo aur PCB par heat/hot spot observe karo",
+                    "Heat se Rosin smoke melt hoke shorted component ki location visually highlight karega"
+                    ],
+                    "solutions": [
+                    "Rosin apply karke required voltage inject karen; melt hone wali Rosin ke neeche jo component heat ho raha hai use identify karo",
+                    "Identify hone ke baad us shorted component ko replace ya repair karo",
+                    "Voltage inject karne ke baad VIN/line continuity verify karo"
+                    ],
+                    "knowledge_facts": [
+                    "Rosin Method me shorted component heat hone par uske upar laga Rosin melt ho jata hai aur component visible ho jata hai",
+                    "Injected voltage line ki nominal voltage ke equal hona chahiye",
+                    "Rosin PCB par spread karne se components cover hote hain; heat spot dekhkar shorted component mil jata hai"
+                    ]
+                },
+                {
+                    "symptom": "Kapoor Method",
+                    "issues": [
+                        "Kapoor Method kya hai?",
+                        "Kapoor Method ka use kyon kiya jata hai?",
+                        "Kapoor Method se shorted component kaise detect hota hai?",
+                        "Kapoor smoke melt hone ka matlab kya hai?",
+                        "Kapoor Method aur Rosin Method me kya difference hai?",
+                        "Kapoor Method me voltage kitna inject karna chahiye?"
+                    ],
+                    "possible_causes": [
+                    "PCB me short ya leakage jise identify karna ho"
+                    ],
+                    "tests_diagnostics": [
+                    "Motherboard par Kapoor (camphor) ka smoke spread karo taki components achhi tarah se dhak jayein",
+                    "DC power supply me shorted line ki nominal voltage set karo",
+                    "Required voltage inject karo aur heat/hot spot observe karo",
+                    "Heat se Kapoor smoke melt/evaporate hoke shorted component area highlight karega"
+                    ],
+                    "solutions": [
+                    "Kapoor spread karke required voltage inject karen; jahan Kapoor melt/evaporate ho, wahan ka component shorted hoga",
+                    "Shorted component ko replace ya repair karo",
+                    "Test ke baad Kapoor residue safai karke continuity check karo"
+                    ],
+                    "knowledge_facts": [
+                    "Kapoor PCB par easily spread ho jata hai aur chipakta nahi; heat se evaporate hoke shorted component identify hota hai",
+                    "Kapoor method rosin se similar hai lekin non-sticky aur safe mani jati hai kuch cases me",
+                    "Injected voltage ko shorted line ke nominal voltage ke barabar set karna zaruri hai"
+                    ]
+                },
+                {
+                    "symptom": "Thinner (Acetone) Method",
+                    "issues": [
+                        "Thinner Method kya hai?",
+                        "Thinner Method ka use kyon kiya jata hai?",
+                        "Thinner Method me shorted component kaise detect hota hai?",
+                        "Thinner ka vapour/steam indicate kya karta hai?",
+                        "Thinner Method aur Kapoor/Rosin Method me difference kya hai?",
+                        "Thinner Method me voltage kitna inject karna chahiye?",
+                        "Thinner use karte waqt safety precautions kya follow karne chahiye?"
+                    ],
+                    "possible_causes": [
+                    "PCB me hidden short/leakage jise detect karna ho"
+                    ],
+                    "tests_diagnostics": [
+                    "Motherboard par AC Tone (Thinner) apply karo taki sare components thinner se bheeg jayein",
+                    "DC power supply me shorted line ki nominal voltage set karo",
+                    "Required voltage inject karo aur thinner evaporation observe karo",
+                    "Jab shorted component heat hoga to aas-paas ka thinner evaporate ho kar vapour/steam banega aur shorted component visible ho jayega"
+                    ],
+                    "solutions": [
+                    "Thinner apply karke DC voltage inject karen; evaporated thinner se shorted component ki location identify karo",
+                    "Identify hone par faulty component replace/repair karo",
+                    "Thinner use karte waqt ventilation aur safety precautions follow karo (flammability, fumes)"
+                    ],
+                    "knowledge_facts": [
+                    "Thinner method me evaporating thinner shorted component ko visually highlight karta hai",
+                    "Required voltage ko shorted line ke nominal voltage ke equal set karna zaruri hai",
+                    "Thinner volatile aur flammable hota hai — safety measures (ventilation, ignition sources se door) zaroor follow karein"
+                    ]
+                },
+                {
+                    "symptom": "Freeze Spray Method",
+                    "issues": [
+                        "Freeze Spray Method kya hai?",
+                        "Freeze Spray ka use kyon kiya jata hai?",
+                        "Freeze Spray me shorted component kaise detect hota hai?",
+                        "Ice/condensation ka melt hona kya indicate karta hai?",
+                        "Freeze Spray Method aur Thinner/Rosin/Kapoor Methods me difference kya hai?",
+                        "Injected voltage kitna hona chahiye Freeze Spray Method me?",
+                        "Freeze Spray use karte waqt moisture se damage kaise avoid karein?"
+                    ],
+                    "possible_causes": [
+                    "PCB par shorted component jise thermal contrast se identify karna ho"
+                    ],
+                    "tests_diagnostics": [
+                    "Motherboard par freeze spray apply karo taki component temperatures extreme low tak chala jayein (ice formation/condensation ho sakta hai)",
+                    "DC power supply me shorted line ki nominal voltage set karo",
+                    "Required voltage inject karo; shorted component heat hoga aur us jagah ki ice/condensation melt ho jayegi",
+                    "Melted area ya condensation change se shorted component visually identify karo"
+                    ],
+                    "solutions": [
+                    "Freeze spray ke baad required voltage inject kar ke melt spot observe karo aur shorted component locate karo",
+                    "Shorted component replace/repair karo",
+                    "Freeze spray use karte waqt moisture se doosre components damage na ho, is baat ka dhyan rakho"
+                    ],
+                    "knowledge_facts": [
+                    "Freeze Spray se PCB par thermal contrast create hota hai; shorted component jaldi garam hota hai aur ice melt hone se location visible hoti hai",
+                    "Is method me moisture/condensation ka risk hota hai — drying/cleaning aur cautious use zaruri hai",
+                    "Injected voltage ko shorted line ke nominal voltage ke equal set karna zaruri hai"
+                    ]
+                },
+                {
+                    "symptom": "Short Killer Method",
+                    "issues": [
+                        "Short Killer Method kya hai?",
+                        "Short Killer ka use kab karna chahiye?",
+                        "High-current injection se short kaise clear hota hai?",
+                        "Short Killer method risky kyun hai?",
+                        "Short Killer use karte waqt safety measures kya follow karne chahiye?",
+                        "Short Killer method aur Rosin/Kapoor/Thinner/Freeze Spray methods me difference kya hai?",
+                        "Short removal ke baad circuit operation kaise verify karein?"
+                    ],
+                    "possible_causes": [
+                    "Severe short jise high-current method se remove/clear karna ho"
+                    ],
+                    "tests_diagnostics": [
+                    "Short Killer machine me required voltage set karo (line nominal voltage ke barabar) aur high current capability check karo",
+                    "Short Killer ke 2 probes (positive/negative) ko use karke shorted line par voltage/current apply karo",
+                    "Observe karo ki kaunsa component turant heat/hurt hota hai (short clears by burning the shorted element)"
+                    ],
+                    "solutions": [
+                    "Short Killer se short remove karna — high current se shorted component burn ho kar open ho jayega aur short clear ho sakta hai",
+                    "Short Killer method risky hai — isse layers burn, PCB trace open, ya extra damage ho sakta hai; use bahut carefuly karo",
+                    "After short removal, replace damaged components/traces and verify circuit operation"
+                    ],
+                    "knowledge_facts": [
+                    "Short Killer high ampere output machine hai — shorted component ko jaldi burn kar deta hai aur shorting remove ho sakti hai",
+                    "Is method me risk high hota hai: internal lines, PCB layers ya adjacent components damage ho sakte hain",
+                    "Safety aur conservative settings (lowest effective current) use karo; agar unsure ho to experienced technician se karvao"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        {
+            "symptom": "Thermal Camera Method",
+            "issues": [
+                "Thermal Camera Method kya hai?",
+                "Thermal camera ka use kab karna chahiye?",
+                "Thermal camera se shorted/leakage component kaise detect hota hai?",
+                "IC balls short hone par thermal camera ka result kaise reliable banayein?",
+                "Thermal camera ke dauran voltage injection me kya precautions lene chahiye?",
+                "Thermal Camera method aur Rosin/Kapoor/Thinner/Freeze Spray methods me difference kya hai?",
+                "Reverse voltage method kab consider karna chahiye?"
+            ],
+            "possible_causes": [
+                "PCB par short circuit ya kisi component mein overheating jo visual heat anomaly create kar raha ho",
+                "Hidden shorts ya leakage jise dusre methods se detect na kiya ja sake"
+            ],
+            "tests_diagnostics": [
+                "Thermal camera se PCB ka scan karo; garam area ya heat spots observe karo",
+                "Heat spots indicate karte hain ki kaunse components/lines shorted ya leakage me hain",
+                "Agar thermal camera se shorting detect na ho, to affected ICs nikal kar individually test karo (reball karna ho sakta hai)"
+            ],
+            "solutions": [
+                "Thermal camera se detect hui heat spots wale components/lines ko repair ya replace karo",
+                "Agar IC balls short ho rahi hain, unhe reball karo aur fir test karo",
+                "Required voltage inject karte waqt ensure karo ki affected line par koi IC connected na ho (5V, 5A recommended)",
+                "Agar fir bhi shorting na remove ho, reverse voltage method ya motherboard swipe consider karo"
+            ],
+            "knowledge_facts": [
+                "Thermal camera heat detect karke visual image create karta hai, jisse shorted/leakage components identify hote hain",
+                "Ye method latest aur sensitive hai, chhoti leakage ko bhi detect karta hai",
+                "Kabhi kabhi motherboard me IC balls short hone se heat component se visible nahi hoti, isliye ICs nikal kar reballing zaruri ho sakti hai",
+                "Injected voltage ke dauran affected line me IC na ho, warna working IC damage ho sakti hai"
+            ]
+        }
+
+    },
+    {
+        {
+            "symptom": "Reverse Voltage Method",
+             "issues": [
+                "Reverse Voltage Method kya hai?",
+                "Reverse voltage method kab use karna chahiye?",
+                "Negative pin aur positive pin ko kaise connect karte hain?",
+                "Reverse voltage apply karte waqt kya precautions lene chahiye?",
+                "Reverse voltage method aur Thermal/Rosin/Kapoor/Thinner/Freeze Spray methods me difference kya hai?",
+                "Reverse voltage method me shorted component ko kaise safely detect karte hain?"
+            ],
+            "possible_causes": [
+                "PCB par shorted line ya hidden leakage jo dusre methods se detect na ho pa rahi ho"
+            ],
+            "tests_diagnostics": [
+                "Shorted line ka voltage aur affected section identify karo",
+                "Required voltage set karo aur negative pin ko shorted line par, positive pin ko ground par connect karo",
+                "Voltage inject karte waqt closely monitor karo ki shorted component heat ho raha hai ya nahi"
+            ],
+            "solutions": [
+                "Reverse voltage apply karke shorted component ko identify aur repair karo",
+                "Agar shorted component detect ho jaye to replace ya repair karo",
+                "Voltage injection ke dauran ensure karo ki baki components safe rahein"
+            ],
+            "knowledge_facts": [
+                "Reverse voltage method ya ulta volt injection method se hidden shorts ko easily detect kiya ja sakta hai",
+                "Isme voltage polarity reverse karke shorted component ki heat ya reaction dekh kar identify kiya jata hai",
+                "Ye method tab use karna chahiye jab baki methods se shorting detect na ho rahi ho"
+            ]
+        }
+
+    },
+    {
+        {
+            "symptom": "OHM Mode Method / Minor Leakage",
+            "issues": [
+                "OHM Mode Method kya hai?",
+                "Minor leakage kaise detect karte hain?",
+                "Auto current readings (4–5A ya 40–45A) me leakage kaise identify karte hain?",
+                "Thermal camera ka use OHM mode method me kaise hota hai?",
+                "OHM mode me multimeter ki reading ko kaise interpret karte hain?",
+                "OHM mode method ke dauran kaunse precautions lene chahiye?"
+            ],
+            "possible_causes": [
+                "Minor leakage in PCB lines",
+                "Auto current (4–5 A or 40–45 A) readings me leakage",
+                "Hidden shorted components not detected by normal methods"
+            ],
+            "tests_diagnostics": [
+                "Thermal camera se minor leakage ya auto current leakage detect karo",
+                "Agar thermal camera se leakage detect na ho to multimeter ko OHM mode me set karo",
+                "Shorted line ki ohm value observe karo",
+                "Motherboard ko SMD machine se 250°C par heat karo aur multimeter value me change observe karo",
+                "Iron se components ko touch karte hue ohm value me change dekh kar leakage component identify karo"
+            ],
+            "solutions": [
+                "Identified shorted/leakage component ko replace ya remove karo",
+                "Thermal camera aur OHM mode method ka combination use karke leakage nikal sakte ho"
+            ],
+            "knowledge_facts": [
+                "OHM mode method multimeter ki sensitivity aur heating effect se leakage detect karta hai",
+                "Minor leakage ya auto current leakage me thermal camera pehle step me use hota hai",
+                "Ye method tab use kiya jata hai jab normal methods se leakage detect na ho"
+            ]
+        }
+
+    }
+
+}

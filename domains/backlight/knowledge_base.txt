@@ -1,0 +1,186 @@
+{
+  "ic_name": "Light Driver IC",
+  "ic_code": "AL65",
+  "ic_description": "",
+  "total_pins": 6,
+
+  "pin_details": [
+    {
+      "pin_number": 1,
+      "pin_name": "Feedback (FB)",
+      "function": "Cathode voltage sense",
+      "uses": "Display panel ke cathode se aane wale voltage ko sense karna",
+      "work": "Cathode voltage ko sense karke brightness ko control karna",
+
+      "faults": [
+        {
+          "fault": ["No backlight problem"],
+          "possible_causes": [
+            "Feedback pin ka connection cathode ke sath toot jana",
+            "Feedback line me lagi 5 ya 10 ohm ki resistor open ho jaana",
+          ],
+          "diagnostic_procedure": [
+            "Display panel ki K1 aur K2 ki line ko light driver IC ki pin 1 (Feedback pin) tak continuity check kijiye.",
+            "Feedback line me laga resistor check kijiye — open ho sakta hai ya dry solder ho sakta hai."
+          ],
+          "diagnostic_tests": [
+            "Multimeter ko Ohms mode me set karke resistor check kijiye.",
+            "Continuity test ke liye multimeter ko buzzer mode me set kijiye."
+          ],
+          "solution": [
+            "Agar cathode line open hai to jumper karke jod dijiye.",
+            "Agar resistor ki value increase ho gayi hai to schematic ke hisab se 5Ω ya 10Ω ka resistor lagaiye.",
+            "Agar resistor open ya dry solder ho gaya hai to resolder kijiye."
+          ]
+        },
+
+        {
+          "fault": ["Backlight fix ho jana ya backlight hamesha 100% rehna"],
+          "possible_causes": [
+            "Feedback pin me lagi resistor ki value 0 ho jana",
+            "Resistor ka direct ground se short ho jana",
+            "Feedback pin ka motherboard se disconnect ho jana",
+            "Display panel ki LED_K line ground se short ho jana"
+          ],
+          "diagnostic_procedure": [
+            "Feedback line me lagi resistor ki value check kijiye — agar 0 ho to 5Ω ya 10Ω resistor lagaiye.",
+            "Light driver IC ki pin 1 motherboard se properly connected honi chahiye — agar nahi to IC ko resolder kijiye.",
+            "Agar resistor short kiya gaya hai to naya resistor lagaiye.",
+            "Display panel ki LED_K line ko diode mode me check kijiye — short ho to remove kijiye."
+          ],
+          "diagnostic_tests": [
+            "Resistance check karne ke liye multimeter Ohms mode me set kijiye.",
+            "Shorting check karne ke liye multimeter diode mode me set kijiye."
+          ],
+          "solution": [
+            "Agar brightness fix hai (100%) to feedback resistor change kijiye.",
+            "Light driver IC ko resolder kijiye.",
+            "Light driver IC ko replace kijiye.",
+            "Agar LED_K line short hai to shorting remove kijiye."
+          ]
+        }
+      ]
+    },
+
+    {
+      "pin_number": 2,
+      "pin_name": "COMP",
+      "function": "Backlight voltage ke loss ko compensate karna",
+      "uses": "Voltage loss ko compensate karta hai. Kai phones me iska use nahi hota. Iske hone ya nahi hone se koi badi problem nahi hoti.",
+      "work": "",
+      "faults": [
+        {
+          "fault":[],
+          "possible_causes":[],
+          "diagnostic_procedure":[],
+          "diagnostic_tests":[],
+          "solution":[]
+        }
+      ],
+        
+      
+    },
+    {
+      "pin_number": 3,
+      "pin_name": "GND",
+      "function": "Light driver ic ko negative supply provide karna.",
+      "uses": "light driver ic ka main negative supply connect with ground.",
+      "work": "yah pin light driver ic ko negative supply deti hai.",
+      "faults": [
+        {
+          "fault": ["No back light."],
+          "possible_causes": ["mother board yah pin disconnect ho jana."],
+          "diagnostic_procedure": ["proper eye test kijiye ic ki pin number 3 ground se proper connect hai ya nhi. Agar water damage hai ya dry sold dikh rahi hai to ic ko reball kijiye."],
+          "diagnostic_tests": [],
+          "solution": []
+        }
+      ]
+    },
+    {
+      "pin_number": 4,
+      "pin_name": "VSW",
+      "function": "switching",
+      "uses": "yah pin inductor ke output me lagakar ground ke sath switching karwane ke liye use hoti hai.",
+      "work": "continues ground ke sath switching karwana taki boost voltage ban sake aur display par back light a sake.",
+      "faults": [ 
+        {
+          "fault": ["Backlight na aana.","Backlight dim ana"],
+          "possible_causes": [
+            "switching pin dry sold ho jana.",
+            "Switching pin open ho jana.",
+            "Switching pin permanent ground se short ho jana."],
+          "diagnostic_procedure": [
+            "ic ki pin number 4 se coil tak connectivity check kijiye.",
+            "Pin number 4 ko dry sold ke liye check kijiye.",
+            "Pin ko ground ke sath shorting ke liye check kijiye",],
+          "diagnostic_tests": ["multimeter ko diode mode me set karke check kijiye."],
+          "solution": [
+            "Agar switching pin open hai to light driver ic ko re sold kijiye.",
+            "Agar switching pin ground se permanent connect hai to shorting agar ic me hai to ic ko change kijiye agar ic me shorting nhi hai to shorting find karke shorting remove kijiye.",
+            "Agar switching pin ki connectivity inductor tak nhi hai to jumper karke connect kijiye."]
+        }
+      ]
+    },
+
+    {
+      "pin_number": 5,
+      "pin_name": "PWM",
+      "function": "Brightness control",
+      "uses": "display panel ke brightness ko kam jada karna",
+      "work": "iss pin ki madad se user phone ke display panel ke brightness ko jitna marji utna kam aur jada kar sakta hai",
+      "faults": [
+        {
+          "fault": ["brightness permanent fix ho jana","Brightness permanent kam hi rehna", "No backlight problem."],
+          "possible_causes": [
+            "Pwm line short ho jana.",
+            "Pwm line open ho jana.",
+            "Pwm line par voltage 1.8v fix ho jana",
+            "Pwm line ke voltage hamesa low hi rehna.",
+            "Pwm line par voltage na aana."],
+          "diagnostic_procedure": [
+            "Agar pwm line open hai to jumper karke jodiye jaha se pwm line aana chahiye display ya cpu se.",
+            "Agar pwm line par voltage hamesa 1.8v ho gaya hai to check kijiye ki kisi ne direct kahi se 1.8v to nhi jod diya hai agar yesa hai to usko disconnect kijiye.",
+            "Agar pwm line par hmesha low voltage hi mil rah hai to display panel ko replace karke dekho",
+            "Agar pwm line par voltage nhi a Raha hai to display panel khrab ho sakta hai PWM line display tak nahi pahuch rahi ho yesa bhi ho sakta hai.",
+            "Display panel ki cpu se judne wali koi line open ya short bhi ho sakti hai."],
+          "diagnostic_tests": [
+            "cool testing ke liye multimeter ko diode mode me aur voltage testing ke liye multimeter ko dc voltage mode me set kijiye."],
+          "solution": [
+            "Agar pwm line open hai to jumper karke jodiye jaha se wo line aati ho waha par.",
+            "Agar pwm line par hamesha 1.8v hai to check kijiye ki wo voltage kyo 1.8 par fix ho gya hai kya kisi ne direct 1.8v se connect kar diya hai agar yesa hai to usko 1.8v se disconnect kijiye.",
+            "Agar pwm line par hamesha low voltage hi rehta hai to dekho ki kahi pwm leaked to nhi ho gya hai light ic water damage to nhi hai agar yesa hai to ic ko reball kijiye aur leakage hai to remove kijiye.",
+            "Agar pwm line par voltage nhi a Raha hai to pwm line open ho sakti hai ya display panel kharab ho sakta hai open ho to usko jumper ki help se jodiye aur agar display panel kharab ho to change karke dekho."]
+        }
+      ]
+    },
+
+    {
+      "pin_number": 6,
+      "pin_name": "VIN",
+      "function": "light driver ic ko working power dena.",
+      "uses": "ic ko working power yahi se milti hai agar yaha se power nhi milegi to ic kam nhi karegi.",
+      "work": "light driver ic ko working power dena",
+      "faults": [
+        {
+          "fault": ["No back light.","Backlight fluctuations."],
+          "possible_causes": [
+            "Yah pin open ho jana.",
+            "Yah pin dry sold ho jana",
+            "Yah pin ground ke sath short ho jana"],
+          "diagnostic_procedure": [
+            "Ic ko remove kijiye aur check kijiye ic ki pin number 6 tak battery ke jitna voltage a raha hai ya nhi.",
+            "Ground ke sath diode value check kijiye pin number 6 ki jitna diode value vph line ki ho utna hi is pin ki hon chahiye."
+            ],
+          "diagnostic_tests": [
+            "diode value check karne ke liye multimeter ko diode mode me set kijiye.",
+            "Voltage check karne ke liye multimeter ko dc voltage mode me set kijiye."],
+          "solution": [
+            "Agar line open hai to pin number 6 ko vph ke sath jumper kijiye.",
+            "Agar pin number 6 dry sold hai to ic ko reball kijiye.",
+            "Agar pin number 6 short hai to shorting remove kijiye."]
+        }
+      ]
+    }
+  ]
+}
+
