@@ -865,16 +865,17 @@ def chat_with_userr(client_data):
         }
     }
     """
-    user_query = client_data['payload']['user_query']
+    data_dict = client_data.dict()
+    user_query = data_dict['payload']['user_query']
     
     # CASE A: Diagnostic Phase (Expert is already working)
-    if client_data['payload']['state']['is_confirmed']:
-        return run_chain_2_expert_diagnostic(client_data)
+    if data_dict['payload']['state']['is_confirmed']:
+        return run_chain_2_expert_diagnostic(data_dict)
 
     # CASE B: Intake Phase (Finding IC and Problem)
     else:
         # Run Chain 1 (The LLM logic to identify IC/Problem)
-        intake_result = run_chain_1_intake(client_data)
+        intake_result = run_chain_1_intake(data_dict)
         
         # Check if Chain 1 just achieved confirmation
         if intake_result['is_confirmed']:
@@ -890,7 +891,7 @@ def chat_with_userr(client_data):
                     user_query=user_query,
                     fault=normalized_fault,
                     pins=related_pins,
-                    conversation_history=client_data['payload']["conversation_history"],
+                    conversation_history=data_dict['payload']["conversation_history"],
                 )
                 
                 # load external manual content and append to context

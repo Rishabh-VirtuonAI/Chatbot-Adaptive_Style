@@ -3,7 +3,8 @@ from pydantic import BaseModel
 import importlib
 from typing import List
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from typing import List, Optional , Dict , Any
 import os
 import mysql.connector
 import logging
@@ -64,11 +65,24 @@ ALLOWED_CATEGORIES = [
     "software_unlock", "touch_fingerprint", "ufs_reprogramming_changing", "usb_flashing"
 ]
 
-class ChatRequest(BaseModel):
-    user_query: str
-    chat_history: List[dict] = []
-    username: str
 
+class ChatState(BaseModel):
+    detected_ic: Optional[str] = None
+    detected_problem: Optional[str] = None
+    is_confirmed: bool = False
+
+class ChatPayload(BaseModel):
+    user_query: str
+    conversation_history: List[Dict[str, str]] = []  # format: {"role": "user", "content": "..."}
+    state: ChatState
+    history_summary: str = ""
+    context_external: Optional[str] = None
+    context_internal: Optional[str] = None # For IC Pinout data or any other internal context
+class ChatRequest(BaseModel):
+    user_id: str
+    username: str
+    payload: ChatPayload
+    
 def load_category_handler(category: str):
     if category not in ALLOWED_CATEGORIES:
         raise HTTPException(status_code=404, detail="Invalid Category")
@@ -117,7 +131,7 @@ async def chat(category: str, request: ChatRequest):
     response =  await loop.run_in_executor(
         executor,
         # lambda: handler.chat_with_user(request.user_query, request.chat_history, request.username)
-        lambda: handler.chat_with_userr(request.user_query)
+        lambda: handler.chat_with_userr(request)
     )
     return APIResponse(
         success= True,
